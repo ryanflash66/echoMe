@@ -34,6 +34,9 @@ class User(AbstractBaseUser):
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['email']
+    spotify_token = models.TextField(null=True, blank=True)
+    spotify_refresh_token = models.TextField(null=True, blank=True)
+    spotify_token_expires = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return self.username

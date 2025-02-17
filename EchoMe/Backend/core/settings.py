@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'tribe'
+    'tribe',
+    'social_django'
 ]
 
 MIDDLEWARE = [
@@ -106,7 +107,30 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.spotify.SpotifyOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
+SOCIAL_AUTH_SPOTIFY_KEY = '5e933dd22d7a4fcfb46d6f0508ca5dca'
+SOCIAL_AUTH_SPOTIFY_SECRET = 'dfbea99b25c44dd3946fc69552c8ade8'
+SOCIAL_AUTH_SPOTIFY_SCOPE = [
+    'user-read-email',
+    'playlist-read-private',
+    'playlist-read-collaborative',
+    'user-library-read'
+]
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.spotify.SpotifyOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'  # Where to redirect after successful login
+SOCIAL_AUTH_LOGIN_ERROR_URL = '/'     # Where to redirect on login errors
+SOCIAL_AUTH_SPOTIFY_AUTH_EXTRA_ARGUMENTS = {
+    'show_dialog': 'true'  # Force user to re-authenticate if needed
+}
+SESSION_COOKIE_SECURE = False  # Set to True in production with HTTPS
+SESSION_COOKIE_SAMESITE = 'Lax'
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
