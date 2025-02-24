@@ -13,19 +13,31 @@ from django.utils import timezone
 from urllib.parse import urlencode
 from django.conf import settings
 
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.authentication import JWTAuthentication
+
 class TribeListCreate(generics.ListCreateAPIView):
     queryset = Tribe.objects.all()
     serializer_class = TribeSerializer
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+
 class TribeDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Tribe.objects.all()
     serializer_class = TribeSerializer
-class UserCreate(generics.CreateAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+
 class UserDetail(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     lookup_field = 'username'
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+
+class UserCreate(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
     def retrieve(self, request, *args, **kwargs):
         try:
