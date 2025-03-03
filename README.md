@@ -34,3 +34,19 @@ This project is built using the following technologies:
 - **SQLite 3** – Lightweight relational database management system
 - **MusicKit** – Apple’s API for music streaming integration
 
+## Testing
+
+Testing will be conducted both **manually and automatically** to ensure functionality and reliability.
+
+### Backend Testing
+For backend testing, we will use:
+- **APITestCase** – To create test cases for Django REST framework.
+- **APIClient** – To simulate API requests and validate responses.
+- **PyTest** – To perform unit and integration testing.
+
+### Frontend Testing
+For frontend testing, we will use:
+- **XCTest** – To set up automated UI and functional tests for the frontend at any stage.
+
+All test cases will be documented and run regularly to maintain software quality.
+
